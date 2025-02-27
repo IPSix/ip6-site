@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div 
       className="relative min-h-screen bg-gray-900 text-white"
-      style={{ backgroundImage: "url('/background.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+      style={{ backgroundImage: "url('/background2.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       {/* Navbar */}
       <nav className="flex justify-between items-center px-10 py-2 bg-white shadow-md fixed w-full z-10">
