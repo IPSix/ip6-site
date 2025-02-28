@@ -1,19 +1,18 @@
-"use client"; // Adicione esta linha no topo do arquivo
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react"; // Para o menu mobile
+import { useState } from "react";
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar o menu mobile
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Dados dos quadros dinâmicos
   const categories = [
     {
       title: "Tecnologia",
       description: "As últimas inovações e tendências.",
       link: "/artigos/tecnologia",
-      image: "/tecnologia-box.jpg", // Adicione uma imagem para cada categoria
+      image: "/tecnologia-box.jpg",
     },
     {
       title: "Games",
@@ -40,25 +39,21 @@ export default function Home() {
       className="relative min-h-screen bg-gray-900 text-white"
       style={{
         backgroundImage: "url('/background3.jpeg')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed', // Mantém o fundo fixo ao rolar
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
       }}
     >
-      {/* Sobreposição escura sobre o background */}
       <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
 
-      {/* Navbar Modernizado */}
       <nav className="bg-white shadow-md fixed w-full z-50">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          {/* Logo e Nome */}
           <div className="flex items-center">
             <Image src="/logo-ip6-preto.png" alt="IP6 Logo" width={50} height={50} />
             <span className="text-5xl font-bold text-gray-900 ml-9">IPSix</span>
           </div>
 
-          {/* Menu Desktop */}
           <div className="hidden md:flex space-x-8 items-center">
             <Link href="/forum" className="text-gray-800 hover:text-blue-600 transition-colors duration-300">
               Fórum
@@ -69,15 +64,11 @@ export default function Home() {
             <Link href="/artigos" className="text-gray-800 hover:text-blue-600 transition-colors duration-300">
               Artigos
             </Link>
-            <Link
-              href="/noticias"
-              className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors duration-300"
-            >
+            <Link href="/noticias" className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors duration-300">
               NOTÍCIAS
             </Link>
           </div>
 
-          {/* Menu Mobile (Ícone de Hambúrguer) */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -101,7 +92,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Menu Mobile (Dropdown) */}
         {isMenuOpen && (
           <div className="md:hidden bg-white shadow-lg">
             <div className="px-6 py-4 space-y-4">
@@ -114,10 +104,7 @@ export default function Home() {
               <Link href="/artigos" className="block text-gray-800 hover:text-blue-600">
                 Artigos
               </Link>
-              <Link
-                href="/noticias"
-                className="block bg-blue-600 text-white px-6 py-2 rounded-full text-center hover:bg-blue-700"
-              >
+              <Link href="/noticias" className="block bg-blue-600 text-white px-6 py-2 rounded-full text-center hover:bg-blue-700">
                 NOTÍCIAS
               </Link>
             </div>
@@ -125,14 +112,31 @@ export default function Home() {
         )}
       </nav>
 
-      {/* Hero Section Refatorada */}
-      <div className="relative w-full pt-20 pb-20 flex items-center justify-center z-10">
+      <div className="relative w-full pt-32 pb-32 min-h-screen flex items-center justify-center z-10">
         <div className="container mx-auto px-6">
-          {/* Quadros Dinâmicos */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {categories.map((category, index) => (
-              <Link href={category.link} key={index}>
-                <div className="bg-white bg-opacity-90 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+          <div className="text-center mb-12">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
+              Bem-vindo ao IPSix
+            </h1>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Explore as últimas notícias, análises e tendências sobre tecnologia, games, E-Sports e muito mais.
+            </p>
+          </div>
+
+          <div className="flex justify-center space-x-4 mb-16">
+            <Link href="/noticias" className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-colors duration-300">
+              Ver Notícias
+            </Link>
+            <Link href="/forum" className="bg-transparent border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-gray-900 transition-colors duration-300">
+              Participe do Fórum
+            </Link>
+          </div>
+
+          <div className="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-6">Destaques da Semana</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {categories.map((category, index) => (
+                <Link href={category.link} key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer">
                   <div className="relative h-40 mb-4">
                     <Image
                       src={category.image}
@@ -144,18 +148,16 @@ export default function Home() {
                   </div>
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">{category.title}</h3>
                   <p className="text-gray-600">{category.description}</p>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Footer Modernizado */}
       <footer className="bg-gray-800 text-white py-12 relative z-20">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Logo e Descrição */}
             <div className="mb-6 md:mb-0">
               <Image src="/logo-ip6-branco.png" alt="IP6 Logo" width={50} height={50} />
               <p className="mt-4 text-gray-400">
@@ -177,7 +179,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Atalhos para Assuntos */}
             <div>
               <h3 className="text-lg font-semibold mb-4">Assuntos</h3>
               <ul className="space-y-2">
@@ -204,7 +205,6 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Links Úteis */}
             <div>
               <h3 className="text-lg font-semibold mb-4">Links Úteis</h3>
               <ul className="space-y-2">
@@ -231,7 +231,6 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Newsletter */}
             <div>
               <h3 className="text-lg font-semibold mb-4">Receba Novidades</h3>
               <p className="text-gray-400 mb-4">
@@ -253,7 +252,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Direitos Autorais */}
           <div className="border-t border-gray-700 mt-8 pt-8 text-center">
             <p className="text-gray-400">
               &copy; 2025 IPSix. Todos os direitos reservados.
