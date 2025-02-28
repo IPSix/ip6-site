@@ -50,7 +50,7 @@ export default function Home() {
       <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
 
       {/* Navbar Modernizado */}
-      <nav className="bg-white shadow-md fixed w-full z-10">
+      <nav className="bg-white shadow-md fixed w-full z-50">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           {/* Logo e Nome */}
           <div className="flex items-center">
@@ -126,8 +126,8 @@ export default function Home() {
       </nav>
 
       {/* Hero Section Refatorada */}
-      <div className="relative w-full h-screen flex items-center justify-center z-10">
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+      <div className="relative w-full pt-20 pb-20 flex items-center justify-center z-10">
+        <div className="container mx-auto px-6">
           {/* Quadros Dinâmicos */}
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {categories.map((category, index) => (
@@ -152,7 +152,7 @@ export default function Home() {
       </div>
 
       {/* Footer Modernizado */}
-      <footer className="bg-gray-800 text-white py-12 mt-20 z-10">
+      <footer className="bg-gray-800 text-white py-12 relative z-20">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Logo e Descrição */}
